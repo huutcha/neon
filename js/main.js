@@ -84,8 +84,11 @@ $(document).ready(function () {
     totalDesign();
     //bg
     var coverflow = $("#coverflow").flipster();
-    var src_bg_f = $(".flipster__item--current").data("src");
-    $("#lenon-slide").css("background-image", "url('" + src_bg_f + "')");
+    var src_bg_f  = $(".flipster__item--current").data("src");
+
+    if (src_bg_f) {
+        $("#lenon-slide").css("background-image", "url('" + src_bg_f + "')");
+    }
 
     $("#lenon-slide #coverflow li").click(function () {
         var src_bg = $(this).data("src");
@@ -138,5 +141,18 @@ $(".font-action").click(function () {
     $(".font-action").removeClass("current");
     $(this).addClass("current");
     $(".neon .shadow").css("font-family", code);
-    $(".neon .shadow").css("font-size", size + "%");
+    $(".neon .shadow").css("font-size", size + "%");    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+$('#downloadImage').click(function(){
+    html2canvas($('#neon')[0]).then(function(canvas) {
+        var image     = canvas.toDataURL();
+        var link      = document.createElement('a');
+        link.download = 'neon-' + Math.floor(Date.now() / 1000) + '.png';
+        link.href     = image;
+        link.target   = '_blank';
+        document.body.appendChild(link);
+        link.click();
+    });
 });
