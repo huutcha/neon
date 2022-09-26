@@ -100,6 +100,8 @@ $(document).ready(function () {
 
     $("#fader").on("input", function () {
         $(".neon").css("font-size", $(this).val() + "px");
+        var width = (($(".neon")[0].offsetWidth / $("#lenon-slide")[0].offsetWidth) * 100);
+        console.log(width);
         $("#fontsize").text($(this).val());
     });
 });
