@@ -143,7 +143,7 @@ $(".font-action").click(function () {
     $(".font-action").removeClass("current");
     $(this).addClass("current");
     $(".neon .shadow").css("font-family", code);
-    $(".neon .shadow").css("font-size", size + "%");    
+    $(".neon .shadow").css("font-size", size + "%");
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
@@ -158,3 +158,11 @@ $('#downloadImage').click(function(){
         link.click();
     });
 });
+
+var bg = ['image/bg.jpg', 'image/bg1.jpg'];
+var bgActive = 0;
+
+setInterval(() => {
+    bgActive = bgActive === 0 ? 1 : 0;
+    $('#neon').css("background-image", "url('" + bg[bgActive] + "')");
+}, 5000)
